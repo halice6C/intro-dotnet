@@ -1,0 +1,22 @@
+@model DataProvider.Person
+
+<h2>Détails de la Personne</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <td>@Model.PersonId</td>
+    </tr>
+    <tr>
+        <th>Prénom</th>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <th>Nom</th>
+        <td>@Model.LastName</td>
+    </tr>
+    <tr>
+        <th>Âge</th>
+        <td>@Model.Age</td>
+    </tr>
+</table>

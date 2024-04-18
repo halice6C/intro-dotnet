@@ -2,7 +2,30 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model IEnumerable<DataProvider.Person>
+
+<h1>Liste des personnes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+
+                 <tr onclick="window.location.href='@Url.Action("PersonDetails", "Home", new { id = person.PersonId })';" style="cursor:pointer;"> <td >@person.FirstName</td>
+                <td>@person.LastName</td>
+                <td>@person.Age</td>
+           </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+   
+</script>
