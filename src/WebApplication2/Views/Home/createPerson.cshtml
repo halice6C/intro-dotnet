@@ -1,0 +1,19 @@
+@model IEnumerable<DataProvider.Person>
+
+<h1>Créer une nouvelle personne</h1>
+
+<form asp-action="SavePerson" method="post">
+    <div class="form-group">
+        <label for="FirstName">First Name:</label>
+        <input type="text" class="form-control" id="FirstName" name="FirstName" required>
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name:</label>
+        <input type="text" class="form-control" id="LastName" name="LastName" required>
+    </div>
+    <div class="form-group">
+        <label for="Age">Age:</label>
+        <input type="number" class="form-control" id="Age" name="Age" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Créer</button>
+</form>

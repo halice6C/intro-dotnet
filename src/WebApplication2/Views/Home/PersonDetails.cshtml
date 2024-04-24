@@ -1,7 +1,6 @@
 @model DataProvider.Person
 
-<h2>Détails de la Personne</h2>
-
+<h2>Détails de la Personne</h2> 
 <table class="table">
     <tr>
         <th>ID</th>
@@ -20,3 +19,8 @@
         <td>@Model.Age</td>
     </tr>
 </table>
+
+<div>
+    <a class="btn btn-info" role="button" href="@Url.Action("UpdatePerson", "Home", new { id = @Model.PersonId})"  >Update</a>
+    <a class="btn btn-danger" role="button" href="@Url.Action("DeletePerson", "Home", new { id = @Model.PersonId})" >Delete</a>
+</div>

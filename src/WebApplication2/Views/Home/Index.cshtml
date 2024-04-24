@@ -5,13 +5,17 @@
 @model IEnumerable<DataProvider.Person>
 
 <h1>Liste des personnes</h1>
-<button class="button buttonCreate" onclick="">Create</button>
+<form id="createForm" action="@Url.Action("CreatePerson", "Home")" method="post">
+    <button type="submit" class="btn btn-info" style="margin-left: 1000px;">Create</button>
+</form>
+ 
 <table class="table">
     <thead>
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Age</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +25,7 @@
                  <tr onclick="window.location.href='@Url.Action("PersonDetails", "Home", new { id = person.PersonId })';" style="cursor:pointer;"> <td >@person.FirstName</td>
                 <td>@person.LastName</td>
                 <td>@person.Age</td>
+                <td><a class="btn btn-danger" href="@Url.Action("DeletePerson", "Home", new { id = person.PersonId })" >Delete</a></td>
            </tr>
         }
     </tbody>

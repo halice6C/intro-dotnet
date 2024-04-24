@@ -1,0 +1,23 @@
+@model DataProvider.Person
+
+<h1>Modifier @Model.FirstName</h1>
+
+<form asp-action="ConfirmUpdatePerson" method="post">
+    <div class="form-group" >
+        <label for="PersonId">PersonId:</label>
+        <input readonly type="hidden" class="form-control" id="PersonId" name="PersonId" value="@Model.PersonId" required>
+    </div>
+    <div class="form-group">
+        <label for="FirstName">First Name:</label>
+        <input type="text" class="form-control" id="FirstName" name="FirstName" value="@Model.FirstName" required>
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name:</label>
+        <input type="text" class="form-control" id="LastName" name="LastName" value="@Model.LastName" required>
+    </div>
+    <div class="form-group">
+        <label for="Age">Age:</label>
+        <input type="number" class="form-control" id="Age" name="Age" value="@Model.Age" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

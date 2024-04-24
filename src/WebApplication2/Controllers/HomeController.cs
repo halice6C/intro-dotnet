@@ -20,12 +20,52 @@ namespace WebApplication2.Controllers
             _personRepository = personRepository;
         }
         [Route("personDetails/{id}")]
-         public IActionResult PersonDetails(Guid id)
-    {
-         var person = _personRepository.Get(id);
-         ViewBag.Id = id;
+        public IActionResult PersonDetails(Guid id)
+        {
+            var person = _personRepository.Get(id);
+            ViewBag.Id = id;
             return View(person);
-    }
+        }
+        [Route("createPerson/")]
+        public IActionResult CreatePerson()
+        {
+            return View();
+        }
+        public IActionResult SavePerson(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                var createdPerson = _personRepository.Create(person.FirstName, person.LastName, person.Age);
+                return RedirectToAction("Index"); // Redirige vers la page principale ou toute autre action souhaitée
+            }
+            return View(); // Retourne la vue avec les erreurs de validation
+        }
+        [Route("deletePerson/{id}")]
+        public IActionResult DeletePerson(Guid id)
+        {
+            if (ModelState.IsValid)
+            {
+                var createdPerson = _personRepository.Delete(id);
+                return RedirectToAction("Index"); // Redirige vers la page principale ou toute autre action souhaitée
+            }
+            return View(); // Retourne la vue avec les erreurs de validation
+        }
+        [Route("updatePerson/{id}")]
+        public IActionResult UpdatePerson(Guid id)
+        {
+            var person = _personRepository.Get(id);
+            return View(person);
+        }
+        [Route("confirmUpdatePerson/")]
+        public IActionResult ConfirmUpdatePerson(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                var createdPerson = _personRepository.Update(person.PersonId, person.FirstName, person.LastName, person.Age);
+                return RedirectToAction("Index"); // Redirige vers la page principale ou toute autre action souhaitée
+            }
+            return View(); // Retourne la vue avec les erreurs de validation
+        }
         public IActionResult Index()
         {
             var people = _personRepository.GetAll();
